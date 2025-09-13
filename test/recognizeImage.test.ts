@@ -10,7 +10,7 @@ describe("recognizeImage", () => {
             chat: mock(() => Promise.resolve({message:{content:"a dog"}}))
         } as never as Ollama;
         await recognizeImage(inferenceProvider, imageBuffer).then(result => {
-        expect(inferenceProvider).toHaveBeenCalled()
+        expect(inferenceProvider.chat).toHaveBeenCalled()
      });   
     });
 });

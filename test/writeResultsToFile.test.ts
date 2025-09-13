@@ -8,9 +8,8 @@ describe("writeResultsToFile", () => {
     });
     
     it("writes results to a file", async () => {
-        const write = mock(() => {});
-        // @ts-expect-error
-        await writeResultsToFile(write, ["cat", "dog"]);
-        expect(write).toHaveBeenCalledWith("results.txt", "Results: cat, dog\n");
+        const write = mock(() => {}) as never as (path: string, data: string) => Promise<void>;
+        await writeResultsToFile(write, "dog");
+        expect(write).toHaveBeenCalledWith("results.txt", "dog");
     })
 });
