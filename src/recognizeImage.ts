@@ -1,7 +1,6 @@
-import ollama from 'ollama'
-
-export async function recognizeImage(image: Buffer): Promise<string> {
-    const response = await ollama.chat({ 
+import type { Ollama } from "ollama";
+export async function recognizeImage(inferenceProvider: Ollama, image: Buffer): Promise<string> {
+    const response = await inferenceProvider.chat({ 
         model: "gemma3:27b",
         messages: [
             {

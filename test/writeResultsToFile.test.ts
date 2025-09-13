@@ -1,6 +1,6 @@
 
 import { describe, it, expect, mock } from "bun:test";
-import { writeResultsToFile } from "./writeResultsToFile";
+import { writeResultsToFile } from "../src/writeResultsToFile";
 
 describe("writeResultsToFile", () => {
     it("is a function", () => {
