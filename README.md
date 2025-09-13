@@ -7,14 +7,14 @@ Alan continuously captures screenshots and performs image recognition. The resul
 ## Features
 
 - Automated screenshot capture
-- Image recognition using Ollama AI model
-- Results logging to file
+- Image recognition using Google's Gemini 2.0 Flash model
+- Continuous results logging with timestamps
 - Built with TypeScript and Bun runtime
 
 ## Prerequisites
 
 - [Bun](https://bun.sh) runtime installed
-- [Ollama](https://ollama.ai) installed and running locally
+- Gemini API key
 - TypeScript 5.x
 
 ## Installation
@@ -30,6 +30,14 @@ Alan continuously captures screenshots and performs image recognition. The resul
    bun install
    ```
 
+3. Set up your Gemini API key:
+   - Visit [Google AI Studio](https://aistudio.google.com/app/apikey)
+   - Create an API key
+   - Set the API key in your environment:
+     ```bash
+     export GEMINI_API_KEY='your-api-key-here'
+     ```
+
 ## Usage
 
 Run the application:
@@ -40,8 +48,8 @@ bun run index.ts
 
 The application will:
 1. Take screenshots of your desktop
-2. Process the screenshots through Ollama for image recognition
-3. Save the recognition results to a text file
+2. Process the screenshots through Gemini Pro Vision for image recognition
+3. Append the recognition results with timestamps to results.txt
 
 ## Development
 
