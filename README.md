@@ -2,6 +2,8 @@
 
 Alan continuously captures screenshots and performs image recognition. The results of the image recognition are logged for further analysis.
 
+> 👋 Hey! Watch me code it in this 📺[recorded livestream](https://youtube.com/live/B8EmMTJGcaA).
+
 ## Features
 
 - Automated screenshot capture
