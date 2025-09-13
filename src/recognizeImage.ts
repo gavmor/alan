@@ -1,14 +1,23 @@
-import type { Ollama } from "ollama";
-export async function recognizeImage(inferenceProvider: Ollama, image: Buffer): Promise<string> {
-    const response = await inferenceProvider.chat({ 
-        model: "gemma3:27b",
-        messages: [
+import { GoogleGenerativeAI, GenerativeModel } from "@google/generative-ai";
+
+export async function recognizeImage(model: GenerativeModel, image: Buffer): Promise<string> {
+    const prompt = "Describe what you see in this image in detail.";
+    
+    try {
+        const result = await model.generateContent([
             {
-                role: "user",
-                content: "Describe this image:",
-                images: [image.toBase64()]
-            }
-        ]
-    });
-    return response.message.content;
+                inlineData: {
+                    mimeType: 'image/jpeg',
+                    data: image.toString('base64')
+                }
+            },
+            { text: prompt }
+        ]);
+
+        const response = await result.response;
+        return response.text();
+    } catch (error) {
+        console.error('Error generating content:', error);
+        throw error;
+    }
 }

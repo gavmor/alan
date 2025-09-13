@@ -2,13 +2,13 @@ import { recognizeImage } from "./recognizeImage";
 import { takeScreenshot } from "./takeScreenshot";
 import { writeResultsToFile } from "./writeResultsToFile";
 import { writeFile } from "fs/promises";
-import ollama from 'ollama'
+import { model } from "./gemini";
 
 export async function main() {
     const screenshot = await takeScreenshot();
 
-    // Feed the screenshot to the image recognition model
-    const results = await recognizeImage(ollama, screenshot);
+    // Feed the screenshot to the Gemini model
+    const results = await recognizeImage(model, screenshot);
 
     // Write the results to a text file
     await writeResultsToFile(writeFile, results);

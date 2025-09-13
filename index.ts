@@ -4,6 +4,4 @@
 
 import { main } from "./src/main";
 
-
-
 do { await main() } while (true);
