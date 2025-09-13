@@ -1,6 +1,4 @@
-import { writeFile } from "fs/promises";
 
-export async function writeResultsToFile(write=writeFile, results: string[]): Promise<void> {
-    const data = "Results: " + results.join(", ") + "\n";
-    write("results.txt", data);
+export async function writeResultsToFile(write: (path: string, data: string) => Promise<void>, results: string): Promise<void> {
+    await write("results.txt", results);
 }

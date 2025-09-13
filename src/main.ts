@@ -1,6 +1,7 @@
 import { recognizeImage } from "./recognizeImage";
 import { takeScreenshot } from "./takeScreenshot";
 import { writeResultsToFile } from "./writeResultsToFile";
+import { writeFile } from "fs/promises";
 
 export async function main() {
     const screenshot = await takeScreenshot();
@@ -9,7 +10,7 @@ export async function main() {
     const results = await recognizeImage(screenshot);
 
     // Write the results to a text file
-    await writeResultsToFile(results);
+    await writeResultsToFile(writeFile, results);
 
     // Wait for a short period before taking the next screenshot
     await new Promise(resolve => setTimeout(resolve, 0));
